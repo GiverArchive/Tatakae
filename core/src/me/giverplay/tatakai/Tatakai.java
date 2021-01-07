@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import me.giverplay.tatakai.world.World;
 
 public final class Tatakai extends ApplicationAdapter
 {
@@ -17,6 +18,8 @@ public final class Tatakai extends ApplicationAdapter
 	private OrthographicCamera camera;
 	private Viewport viewport;
 	private SpriteBatch batch;
+
+	private World world;
 
 	public Tatakai()
 	{
@@ -31,6 +34,9 @@ public final class Tatakai extends ApplicationAdapter
 
 		viewport = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
 		batch = new SpriteBatch();
+
+		world = new World();
+		world.generate();
 	}
 
 	@Override
@@ -40,6 +46,8 @@ public final class Tatakai extends ApplicationAdapter
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		batch.begin();
+
+		world.render(batch);
 
 		batch.end();
 	}
