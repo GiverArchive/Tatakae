@@ -2,18 +2,29 @@ package me.giverplay.tatakai.world;
 
 import static me.giverplay.tatakai.block.Block.BLOCK_SIZE;
 
+import com.artemis.Entity;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.artemis.WorldConfigurationBuilder;
+
 import me.giverplay.tatakai.block.Block;
+import me.giverplay.tatakai.entity.EntityFactory;
 import me.giverplay.tatakai.index.Blocks;
 
 public class World
 {
   private final int[][][] blocks;
+  private final com.artemis.World world;
 
   public World(int width, int height, int layers)
   {
     this.blocks = new int[width][height][layers];
+
+    WorldConfigurationBuilder config = new WorldConfigurationBuilder();
+
+    world = new com.artemis.World(config.build());
+
+    Entity player = EntityFactory.createPlayer(world, 0, 0);
   }
 
   public void generate()
