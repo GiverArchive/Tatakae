@@ -9,11 +9,11 @@ import me.giverplay.tatakai.index.Blocks;
 
 public class World
 {
-  private final int[][][] blocks = new int[80][45][2];
+  private final int[][][] blocks;
 
-  public World()
+  public World(int width, int height, int layers)
   {
-
+    this.blocks = new int[width][height][layers];
   }
 
   public void generate()
@@ -22,25 +22,28 @@ public class World
     {
       for(int y = 0; y < getHeight(); y++)
       {
-        if(y < 2)
+        for(int l = 0; l < getLayers(); l++)
         {
-          blocks[x][y][1] = 5;
-        }
-        else if(y < 10)
-        {
-          blocks[x][y][1] = 4;
-        }
-        else if(y < 15)
-        {
-          blocks[x][y][1] = 3;
-        }
-        else if(y < 20)
-        {
-          blocks[x][y][1] = 1;
-        }
-        else if(y < 22)
-        {
-          blocks[x][y][1] = 2;
+          if(y < 2)
+          {
+            blocks[x][y][l] = 5;
+          }
+          else if(y < 10)
+          {
+            blocks[x][y][l] = 4;
+          }
+          else if(y < 15)
+          {
+            blocks[x][y][l] = 3;
+          }
+          else if(y < 20)
+          {
+            blocks[x][y][l] = 1;
+          }
+          else if(y < 22)
+          {
+            blocks[x][y][l] = 2;
+          }
         }
       }
     }
@@ -54,11 +57,14 @@ public class World
     {
       for(int y = 0; y < getHeight(); y++)
       {
-        texture = Blocks.getBlockByID(blocks[x][y][1]).texture;
-
-        if(texture != null)
+        for(int l = 0; l < getLayers(); l++)
         {
-          batch.draw(texture, x * BLOCK_SIZE, y * BLOCK_SIZE);
+          texture = getBlock(x, y, l).texture;
+
+          if(texture != null)
+          {
+            batch.draw(texture, x * BLOCK_SIZE, y * BLOCK_SIZE);
+          }
         }
       }
     }

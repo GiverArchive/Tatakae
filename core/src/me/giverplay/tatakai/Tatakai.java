@@ -35,20 +35,18 @@ public final class Tatakai extends ApplicationAdapter
 		viewport = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
 		batch = new SpriteBatch();
 
-		world = new World();
+		world = new World(256, 256, 2);
 		world.generate();
 	}
 
 	@Override
 	public void render ()
 	{
-		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClearColor(0.3f, 0.6f, 0.8f, 1);
 
 		batch.begin();
-
 		world.render(batch);
-
 		batch.end();
 	}
 
