@@ -17,6 +17,8 @@ public class World implements Disposable
   private final com.artemis.World world;
   private final Tatakai game;
 
+  private int seaLevel = 12;
+
   public World(Tatakai tatakai, int width, int height, int layers)
   {
     this.blocks = new int[width][height][layers];
@@ -28,7 +30,7 @@ public class World implements Disposable
 
     world = new com.artemis.World(config.build());
 
-    Entity player = EntityFactory.createPlayer(world, 0, 0);
+    EntityFactory.createPlayer(world, 0, 0);
   }
 
   public void generate()
@@ -39,23 +41,23 @@ public class World implements Disposable
       {
         for(int l = 0; l < getLayers(); l++)
         {
-          if(y < 2)
+          if(y < getSeaLevel() -10)
           {
             blocks[x][y][l] = 5;
           }
-          else if(y < 10)
+          else if(y < getSeaLevel() -8)
           {
             blocks[x][y][l] = 4;
           }
-          else if(y < 15)
+          else if(y < getSeaLevel() -5)
           {
             blocks[x][y][l] = 3;
           }
-          else if(y < 20)
+          else if(y < getSeaLevel() - 2)
           {
             blocks[x][y][l] = 1;
           }
-          else if(y < 22)
+          else if(y < getSeaLevel())
           {
             blocks[x][y][l] = 2;
           }
@@ -94,5 +96,10 @@ public class World implements Disposable
   public void dispose()
   {
     world.dispose();
+  }
+
+  public int getSeaLevel()
+  {
+    return this.seaLevel;
   }
 }
