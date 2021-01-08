@@ -1,9 +1,8 @@
 package me.giverplay.tatakai.world;
 
-import com.artemis.Entity;
 import com.artemis.WorldConfigurationBuilder;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Disposable;
-import me.giverplay.tatakai.Tatakai;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
 import me.giverplay.tatakai.entity.system.SpriteRenderSystem;
@@ -15,18 +14,16 @@ public class World implements Disposable
   private final int[][][] blocks;
 
   private final com.artemis.World world;
-  private final Tatakai game;
 
   private int seaLevel = 12;
 
-  public World(Tatakai tatakai, int width, int height, int layers)
+  public World(OrthographicCamera camera, int width, int height, int layers)
   {
     this.blocks = new int[width][height][layers];
-    this.game = tatakai;
 
     WorldConfigurationBuilder config = new WorldConfigurationBuilder()
-            .with(new TileRenderSystem(this, game.getCamera()))
-            .with(new SpriteRenderSystem(game.getCamera()));
+            .with(new TileRenderSystem(this, camera))
+            .with(new SpriteRenderSystem(camera));
 
     world = new com.artemis.World(config.build());
 
