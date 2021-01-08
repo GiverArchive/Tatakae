@@ -6,6 +6,7 @@ buildscript {
         roboVMVersion = '2.3.10'
         box2DLightsVersion = '1.4'
         aiVersion = '1.8.0'
+        artemisVersion = '2.3.0'
     }
 
     repositories {
@@ -51,7 +52,6 @@ project(":desktop") {
         api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-controllers-desktop:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-controllers-platform:$gdxVersion:natives-desktop"
-        
     }
 }
 
@@ -77,7 +77,6 @@ project(":android") {
         api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         api "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
-        
     }
 }
 
@@ -93,7 +92,6 @@ project(":ios") {
         api "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
         api "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-ios"
-        
     }
 }
 
@@ -106,5 +104,6 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         api "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+        api "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
     }
 }
