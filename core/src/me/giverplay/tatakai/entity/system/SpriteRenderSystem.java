@@ -56,4 +56,10 @@ public class SpriteRenderSystem extends IteratingSystem
   {
     batch.end();
   }
+
+  @Override
+  protected void dispose()
+  {
+    batch.dispose();
+  }
 }

@@ -2,6 +2,7 @@ package me.giverplay.tatakai.world;
 
 import com.artemis.Entity;
 import com.artemis.WorldConfigurationBuilder;
+import com.badlogic.gdx.utils.Disposable;
 import me.giverplay.tatakai.Tatakai;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
@@ -9,7 +10,7 @@ import me.giverplay.tatakai.entity.system.SpriteRenderSystem;
 import me.giverplay.tatakai.entity.system.TileRenderSystem;
 import me.giverplay.tatakai.index.Blocks;
 
-public class World
+public class World implements Disposable
 {
   private final int[][][] blocks;
 
@@ -87,5 +88,11 @@ public class World
   public int getLayers()
   {
     return blocks[0][0].length;
+  }
+
+  @Override
+  public void dispose()
+  {
+    world.dispose();
   }
 }

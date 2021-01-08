@@ -55,6 +55,7 @@ public final class Tatakai extends ApplicationAdapter
 	public void dispose ()
 	{
 		batch.dispose();
+		world.dispose();
 	}
 
 	public OrthographicCamera getCamera()

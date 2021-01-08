@@ -41,6 +41,12 @@ public class TileRenderSystem extends BaseSystem
     batch.end();
   }
 
+  @Override
+  protected void dispose()
+  {
+    batch.dispose();
+  }
+
   private void render(Batch batch)
   {
     Texture texture;
