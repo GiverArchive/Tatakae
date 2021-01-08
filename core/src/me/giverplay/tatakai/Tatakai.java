@@ -45,10 +45,6 @@ public final class Tatakai extends ApplicationAdapter
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0.3f, 0.6f, 0.8f, 1);
 
-		batch.begin();
-		world.render(batch);
-		batch.end();
-
 		world.update(Gdx.graphics.getDeltaTime());
 	}
 

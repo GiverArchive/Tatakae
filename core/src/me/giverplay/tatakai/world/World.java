@@ -1,16 +1,12 @@
 package me.giverplay.tatakai.world;
 
-import static me.giverplay.tatakai.block.Block.BLOCK_SIZE;
-
 import com.artemis.Entity;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.artemis.WorldConfigurationBuilder;
-
 import me.giverplay.tatakai.Tatakai;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
 import me.giverplay.tatakai.entity.system.SpriteRenderSystem;
+import me.giverplay.tatakai.entity.system.TileRenderSystem;
 import me.giverplay.tatakai.index.Blocks;
 
 public class World
@@ -25,8 +21,9 @@ public class World
     this.blocks = new int[width][height][layers];
     this.game = tatakai;
 
-    WorldConfigurationBuilder config = new WorldConfigurationBuilder();
-    config.with(new SpriteRenderSystem(tatakai.getCamera()));
+    WorldConfigurationBuilder config = new WorldConfigurationBuilder()
+            .with(new TileRenderSystem(this, game.getCamera()))
+            .with(new SpriteRenderSystem(game.getCamera()));
 
     world = new com.artemis.World(config.build());
 
@@ -70,27 +67,6 @@ public class World
   {
     world.setDelta(deltaTime);
     world.process();
-  }
-
-  public void render(Batch batch)
-  {
-    Texture texture;
-
-    for(int x = 0; x < getWidth(); x++)
-    {
-      for(int y = 0; y < getHeight(); y++)
-      {
-        for(int l = 0; l < getLayers(); l++)
-        {
-          texture = getBlock(x, y, l).texture;
-
-          if(texture != null)
-          {
-            batch.draw(texture, x * BLOCK_SIZE, y * BLOCK_SIZE);
-          }
-        }
-      }
-    }
   }
 
   public Block getBlock(int x, int y, int layer)
