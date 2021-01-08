@@ -1,10 +1,12 @@
 package me.giverplay.tatakai.world;
 
+import com.artemis.Entity;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Disposable;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
+import me.giverplay.tatakai.entity.system.MovementSystem;
 import me.giverplay.tatakai.entity.system.SpriteRenderSystem;
 import me.giverplay.tatakai.entity.system.TileRenderSystem;
 import me.giverplay.tatakai.index.Blocks;
@@ -14,6 +16,9 @@ public class World implements Disposable
   private final int[][][] blocks;
 
   private final com.artemis.World world;
+  private final Entity player;
+
+  public float gravity = -576;
 
   private int seaLevel = 12;
 
@@ -22,12 +27,13 @@ public class World implements Disposable
     this.blocks = new int[width][height][layers];
 
     WorldConfigurationBuilder config = new WorldConfigurationBuilder()
+            .with(new MovementSystem(this))
             .with(new TileRenderSystem(this, camera))
             .with(new SpriteRenderSystem(camera));
 
     world = new com.artemis.World(config.build());
 
-    EntityFactory.createPlayer(world, 0, 0);
+    player = EntityFactory.createPlayer(world, 0, getHeight() * Block.BLOCK_SIZE);
   }
 
   public void generate()
@@ -89,14 +95,24 @@ public class World implements Disposable
     return blocks[0][0].length;
   }
 
-  @Override
-  public void dispose()
+  public Entity getPlayer()
   {
-    world.dispose();
+    return player;
   }
 
   public int getSeaLevel()
   {
     return this.seaLevel;
+  }
+
+  public void setSeaLevel(int seaLevel)
+  {
+    this.seaLevel = seaLevel;
+  }
+
+  @Override
+  public void dispose()
+  {
+    world.dispose();
   }
 }

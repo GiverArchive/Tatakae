@@ -6,6 +6,7 @@ import com.artemis.World;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import me.giverplay.tatakai.entity.component.PlayerComponent;
+import me.giverplay.tatakai.entity.component.RigidBodyComponent;
 import me.giverplay.tatakai.entity.component.SpriteComponent;
 import me.giverplay.tatakai.entity.component.TransformComponent;
 
@@ -24,10 +25,12 @@ public class EntityFactory
     spriteComponent.sprite = new Sprite(new Texture("player/player.png"));
 
     PlayerComponent playerComponent = new PlayerComponent();
+    RigidBodyComponent rigidBodyComponent = new RigidBodyComponent();
 
     edit.add(transformComponent);
     edit.add(spriteComponent);
     edit.add(playerComponent);
+    edit.add(rigidBodyComponent);
 
     return entity;
   }
