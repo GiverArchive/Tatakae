@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Disposable;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
-import me.giverplay.tatakai.entity.system.MovementSystem;
-import me.giverplay.tatakai.entity.system.SpriteRenderSystem;
-import me.giverplay.tatakai.entity.system.TileRenderSystem;
+import me.giverplay.tatakai.system.MovementSystem;
+import me.giverplay.tatakai.system.SpriteRenderSystem;
+import me.giverplay.tatakai.system.TileRenderSystem;
 import me.giverplay.tatakai.index.Blocks;
 
 public class World implements Disposable

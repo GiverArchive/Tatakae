@@ -1,4 +1,4 @@
-package me.giverplay.tatakai.entity.system;
+package me.giverplay.tatakai.system;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;

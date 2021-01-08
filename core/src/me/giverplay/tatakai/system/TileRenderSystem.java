@@ -1,4 +1,4 @@
-package me.giverplay.tatakai.entity.system;
+package me.giverplay.tatakai.system;
 
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
