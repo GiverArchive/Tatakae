@@ -35,7 +35,7 @@ public final class Tatakai extends ApplicationAdapter
 		viewport = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
 		batch = new SpriteBatch();
 
-		world = new World(256, 256, 2);
+		world = new World(this, 256, 256, 2);
 		world.generate();
 	}
 
@@ -48,6 +48,8 @@ public final class Tatakai extends ApplicationAdapter
 		batch.begin();
 		world.render(batch);
 		batch.end();
+
+		world.update(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override
@@ -60,6 +62,11 @@ public final class Tatakai extends ApplicationAdapter
 	public void dispose ()
 	{
 		batch.dispose();
+	}
+
+	public OrthographicCamera getCamera()
+	{
+		return camera;
 	}
 
 	public static Tatakai getInstance()

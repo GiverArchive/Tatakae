@@ -7,20 +7,26 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.artemis.WorldConfigurationBuilder;
 
+import me.giverplay.tatakai.Tatakai;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
+import me.giverplay.tatakai.entity.system.SpriteRenderSystem;
 import me.giverplay.tatakai.index.Blocks;
 
 public class World
 {
   private final int[][][] blocks;
-  private final com.artemis.World world;
 
-  public World(int width, int height, int layers)
+  private final com.artemis.World world;
+  private final Tatakai game;
+
+  public World(Tatakai tatakai, int width, int height, int layers)
   {
     this.blocks = new int[width][height][layers];
+    this.game = tatakai;
 
     WorldConfigurationBuilder config = new WorldConfigurationBuilder();
+    config.with(new SpriteRenderSystem(tatakai.getCamera()));
 
     world = new com.artemis.World(config.build());
 
@@ -58,6 +64,12 @@ public class World
         }
       }
     }
+  }
+
+  public void update(float deltaTime)
+  {
+    world.setDelta(deltaTime);
+    world.process();
   }
 
   public void render(Batch batch)
