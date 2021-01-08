@@ -11,7 +11,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        return new IOSApplication(new Tatakai(), config);
+        return new IOSApplication(Tatakai.getInstance(), config);
     }
 
     public static void main(String[] argv) {

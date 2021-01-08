@@ -11,6 +11,6 @@ public class DesktopLauncher {
 		config.setResizable(false);
 		config.useVsync(true);
 
-		new Lwjgl3Application(new Tatakai(), config);
+		new Lwjgl3Application(Tatakai.getInstance(), config);
 	}
 }

@@ -21,10 +21,7 @@ public final class Tatakai extends ApplicationAdapter
 
 	private World world;
 
-	public Tatakai()
-	{
-		instance = this;
-	}
+	private Tatakai(){}
 
 	@Override
 	public void create ()
@@ -67,6 +64,14 @@ public final class Tatakai extends ApplicationAdapter
 
 	public static Tatakai getInstance()
 	{
+		if(instance == null)
+		{
+			synchronized(Tatakai.class)
+			{
+				instance = new Tatakai();
+			}
+		}
+
 		return instance;
 	}
 }
