@@ -33,7 +33,7 @@ public class World implements Disposable
 
     world = new com.artemis.World(config.build());
 
-    player = EntityFactory.createPlayer(world, 0, getHeight() * Block.BLOCK_SIZE);
+    player = EntityFactory.createPlayer(world, 0, 720);
   }
 
   public void generate()

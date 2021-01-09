@@ -5,7 +5,7 @@ import me.giverplay.tatakai.screen.GameScreen;
 
 public final class Tatakai extends Game
 {
-	public static final boolean DEBUG = false;
+	public static final boolean DEBUG = true;
 
 	private static Tatakai instance;
 
