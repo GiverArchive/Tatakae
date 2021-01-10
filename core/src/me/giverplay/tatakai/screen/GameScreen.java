@@ -6,17 +6,18 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.math.Vector3;
 import me.giverplay.tatakai.Tatakai;
+import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.component.RigidBodyComponent;
 import me.giverplay.tatakai.entity.component.TransformComponent;
 import me.giverplay.tatakai.world.World;
 
 public class GameScreen extends ScreenAdapter
 {
+  private final Vector3 screenCoordinates = new Vector3();
+
   private OrthographicCamera camera;
-  private Viewport viewport;
   private SpriteBatch batch;
 
   private World world;
@@ -24,20 +25,21 @@ public class GameScreen extends ScreenAdapter
   @Override
   public void show ()
   {
-    camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    camera.setToOrtho(false);
+    camera = new OrthographicCamera(Tatakai.SCREEN_WIDTH, Tatakai.SCREEN_HEIGHT);
+    camera.setToOrtho(false, Tatakai.SCREEN_WIDTH, Tatakai.SCREEN_HEIGHT);
 
-    viewport = new FillViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
     batch = new SpriteBatch();
 
-    world = new World(camera, 256, 256, 2);
+    world = new World(camera, Tatakai.SCREEN_WIDTH / Block.BLOCK_SIZE, Tatakai.SCREEN_HEIGHT / Block.BLOCK_SIZE, 2);
     world.generate();
 
     if (Tatakai.DEBUG) {
       Gdx.input.setInputProcessor(new InputAdapter() {
         @Override
         public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-          world.getPlayer().getComponent(TransformComponent.class).position.set(screenX, Gdx.graphics.getHeight() - screenY);
+          screenCoordinates.set(screenX, screenY, 0);
+          camera.unproject(screenCoordinates);
+          world.getPlayer().getComponent(TransformComponent.class).position.set(screenCoordinates.x, screenCoordinates.y);
           world.getPlayer().getComponent(RigidBodyComponent.class).velocity.set(0, 0);
           return true;
         }
@@ -57,7 +59,7 @@ public class GameScreen extends ScreenAdapter
   @Override
   public void resize(int width, int height)
   {
-    viewport.update(width, height);
+
   }
 
   @Override

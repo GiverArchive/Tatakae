@@ -7,7 +7,7 @@ import me.giverplay.tatakai.Tatakai;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		config.setWindowedMode(1280, 720);
+		config.setWindowedMode(Tatakai.SCREEN_WIDTH, Tatakai.SCREEN_HEIGHT);
 		config.setResizable(false);
 		config.useVsync(true);
 
