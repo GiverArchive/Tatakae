@@ -16,7 +16,9 @@ public class World implements Disposable
   private final int[][][] blocks;
 
   private final com.artemis.World world;
-  private final Entity player;
+  private final EntityFactory entityFactory;
+
+  private final int playerId;
 
   public float gravity = -576;
 
@@ -33,7 +35,10 @@ public class World implements Disposable
 
     world = new com.artemis.World(config.build());
 
-    player = EntityFactory.createPlayer(world, 0, 720);
+    entityFactory = new EntityFactory();
+    world.inject(entityFactory);
+
+    playerId = entityFactory.createPlayer(world, 0, 720);
   }
 
   public void generate()
@@ -97,7 +102,17 @@ public class World implements Disposable
 
   public Entity getPlayer()
   {
-    return player;
+    return world.getEntity(playerId);
+  }
+
+  public int getPlayerId()
+  {
+    return playerId;
+  }
+
+  public com.artemis.World getArtemisWorld()
+  {
+    return world;
   }
 
   public int getSeaLevel()

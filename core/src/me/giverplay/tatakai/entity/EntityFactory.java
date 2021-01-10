@@ -1,7 +1,6 @@
 package me.giverplay.tatakai.entity;
 
-import com.artemis.Entity;
-import com.artemis.EntityEdit;
+import com.artemis.ComponentMapper;
 import com.artemis.World;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -12,26 +11,24 @@ import me.giverplay.tatakai.entity.component.TransformComponent;
 
 public class EntityFactory
 {
-  public static Entity createPlayer(World world, float x, float y)
+  private ComponentMapper<TransformComponent> transformComponentMapper;
+  private ComponentMapper<RigidBodyComponent> rigidBodyComponentMapper;
+  private ComponentMapper<PlayerComponent> playerComponentMapper;
+  private ComponentMapper<SpriteComponent> spriteComponentMapper;
+
+  public int createPlayer(World world, float x, float y)
   {
-    Entity entity = world.createEntity();
+    int entityId = world.create();
 
-    EntityEdit edit = entity.edit();
-
-    TransformComponent transformComponent = new TransformComponent();
+    TransformComponent transformComponent = transformComponentMapper.create(entityId);
     transformComponent.position.set(x, y);
 
-    SpriteComponent spriteComponent = new SpriteComponent();
+    SpriteComponent spriteComponent = spriteComponentMapper.create(entityId);
     spriteComponent.sprite = new Sprite(new Texture("player/player.png"));
 
-    PlayerComponent playerComponent = new PlayerComponent();
-    RigidBodyComponent rigidBodyComponent = new RigidBodyComponent();
+    playerComponentMapper.create(entityId);
+    rigidBodyComponentMapper.create(entityId);
 
-    edit.add(transformComponent);
-    edit.add(spriteComponent);
-    edit.add(playerComponent);
-    edit.add(rigidBodyComponent);
-
-    return entity;
+    return entityId;
   }
 }
