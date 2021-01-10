@@ -4,6 +4,7 @@ import com.artemis.ComponentMapper;
 import com.artemis.World;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import me.giverplay.tatakai.entity.component.CollidableComponent;
 import me.giverplay.tatakai.entity.component.PlayerComponent;
 import me.giverplay.tatakai.entity.component.RigidBodyComponent;
 import me.giverplay.tatakai.entity.component.SpriteComponent;
@@ -15,6 +16,7 @@ public class EntityFactory
   private ComponentMapper<RigidBodyComponent> rigidBodyComponentMapper;
   private ComponentMapper<PlayerComponent> playerComponentMapper;
   private ComponentMapper<SpriteComponent> spriteComponentMapper;
+  private ComponentMapper<CollidableComponent> collidableComponentMapper;
 
   public int createPlayer(World world, float x, float y)
   {
@@ -28,6 +30,7 @@ public class EntityFactory
 
     playerComponentMapper.create(entityId);
     rigidBodyComponentMapper.create(entityId);
+    collidableComponentMapper.create(entityId);
 
     return entityId;
   }
