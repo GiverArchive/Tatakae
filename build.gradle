@@ -1,7 +1,7 @@
 buildscript {
 
     ext {
-        appName = "Tatakai"
+        appName = "Tatakae"
         gdxVersion = '1.9.11'
         roboVMVersion = '2.3.10'
         box2DLightsVersion = '1.4'
@@ -17,11 +17,10 @@ buildscript {
         jcenter()
         google()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.1'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.10'
-        
-
     }
 }
 
@@ -42,7 +41,6 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java-library"
-
 
     dependencies {
         implementation project(":core")
@@ -84,7 +82,6 @@ project(":ios") {
     apply plugin: "java-library"
     apply plugin: "robovm"
 
-
     dependencies {
         implementation project(":core")
         api "com.mobidevelop.robovm:robovm-rt:$roboVMVersion"
@@ -97,7 +94,6 @@ project(":ios") {
 
 project(":core") {
     apply plugin: "java-library"
-
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
