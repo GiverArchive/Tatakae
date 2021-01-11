@@ -8,7 +8,7 @@ public final class Tatakai extends Game
 	public static final int SCREEN_WIDTH = 1280;
 	public static final int SCREEN_HEIGHT = 720;
 
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 
 	private static Tatakai instance;
 

@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.Disposable;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.EntityFactory;
 import me.giverplay.tatakai.system.MovementSystem;
+import me.giverplay.tatakai.system.PlayerControllerSystem;
 import me.giverplay.tatakai.system.SpriteRenderSystem;
 import me.giverplay.tatakai.system.TileRenderSystem;
 import me.giverplay.tatakai.index.Blocks;
@@ -29,6 +30,7 @@ public class World implements Disposable
     this.blocks = new int[width][height][layers];
 
     WorldConfigurationBuilder config = new WorldConfigurationBuilder()
+            .with(new PlayerControllerSystem())
             .with(new MovementSystem(this))
             .with(new TileRenderSystem(this, camera))
             .with(new SpriteRenderSystem(camera));
