@@ -1,17 +1,14 @@
 package me.giverplay.tatakae.screen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import me.giverplay.tatakae.block.Block;
-import me.giverplay.tatakae.entity.component.RigidBodyComponent;
-import me.giverplay.tatakae.entity.component.TransformComponent;
-import me.giverplay.tatakae.world.World;
 import me.giverplay.tatakae.Tatakae;
+import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.world.World;
 
 public class GameScreen extends ScreenAdapter
 {
@@ -32,19 +29,6 @@ public class GameScreen extends ScreenAdapter
 
     world = new World(camera, Tatakae.SCREEN_WIDTH / me.giverplay.tatakae.block.Block.BLOCK_SIZE, Tatakae.SCREEN_HEIGHT / Block.BLOCK_SIZE, 2);
     world.generate();
-
-    if (Tatakae.DEBUG) {
-      Gdx.input.setInputProcessor(new InputAdapter() {
-        @Override
-        public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-          screenCoordinates.set(screenX, screenY, 0);
-          camera.unproject(screenCoordinates);
-          world.getPlayer().getComponent(TransformComponent.class).position.set(screenCoordinates.x, screenCoordinates.y);
-          world.getPlayer().getComponent(RigidBodyComponent.class).velocity.set(0, 0);
-          return true;
-        }
-      });
-    }
   }
 
   @Override
