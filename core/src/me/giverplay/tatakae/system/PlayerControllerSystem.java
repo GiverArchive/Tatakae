@@ -1,4 +1,4 @@
-package me.giverplay.tatakai.system;
+package me.giverplay.tatakae.system;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
@@ -6,17 +6,17 @@ import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
-import me.giverplay.tatakai.entity.component.CollidableComponent;
-import me.giverplay.tatakai.entity.component.JumpComponent;
-import me.giverplay.tatakai.entity.component.PlayerComponent;
-import me.giverplay.tatakai.entity.component.RigidBodyComponent;
+import me.giverplay.tatakae.entity.component.CollidableComponent;
+import me.giverplay.tatakae.entity.component.RigidBodyComponent;
+import me.giverplay.tatakae.entity.component.JumpComponent;
+import me.giverplay.tatakae.entity.component.PlayerComponent;
 
 import static com.badlogic.gdx.Input.Keys.*;
 
 public class PlayerControllerSystem extends IteratingSystem
 {
-  private ComponentMapper<CollidableComponent> collidableComponentMapper;
-  private ComponentMapper<RigidBodyComponent> rigidBodyComponentMapper;
+  private ComponentMapper<me.giverplay.tatakae.entity.component.CollidableComponent> collidableComponentMapper;
+  private ComponentMapper<me.giverplay.tatakae.entity.component.RigidBodyComponent> rigidBodyComponentMapper;
   private ComponentMapper<PlayerComponent> playerComponentMapper;
   private ComponentMapper<JumpComponent> jumpComponentMapper;
 
@@ -26,7 +26,7 @@ public class PlayerControllerSystem extends IteratingSystem
 
   public PlayerControllerSystem()
   {
-    super(Aspect.all(PlayerComponent.class, RigidBodyComponent.class, JumpComponent.class, CollidableComponent.class));
+    super(Aspect.all(PlayerComponent.class, me.giverplay.tatakae.entity.component.RigidBodyComponent.class, JumpComponent.class, me.giverplay.tatakae.entity.component.CollidableComponent.class));
     Gdx.input.setInputProcessor(new InputMultiplexer(new GameInputAdapter()));
   }
 

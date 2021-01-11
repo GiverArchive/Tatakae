@@ -1,8 +1,8 @@
-package me.giverplay.tatakai.index;
+package me.giverplay.tatakae.index;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.IntMap;
-import me.giverplay.tatakai.block.Block;
+import me.giverplay.tatakae.block.Block;
 
 public final class Blocks
 {

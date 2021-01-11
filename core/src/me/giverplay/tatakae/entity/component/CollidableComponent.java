@@ -1,4 +1,4 @@
-package me.giverplay.tatakai.entity.component;
+package me.giverplay.tatakae.entity.component;
 
 import com.artemis.Component;
 

@@ -1,4 +1,4 @@
-package me.giverplay.tatakai;
+package me.giverplay.tatakae;
 
 import android.os.Bundle;
 

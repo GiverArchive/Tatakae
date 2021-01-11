@@ -1,23 +1,23 @@
-package me.giverplay.tatakai.entity;
+package me.giverplay.tatakae.entity;
 
 import com.artemis.ComponentMapper;
 import com.artemis.World;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import me.giverplay.tatakai.entity.component.CollidableComponent;
-import me.giverplay.tatakai.entity.component.JumpComponent;
-import me.giverplay.tatakai.entity.component.PlayerComponent;
-import me.giverplay.tatakai.entity.component.RigidBodyComponent;
-import me.giverplay.tatakai.entity.component.SpriteComponent;
-import me.giverplay.tatakai.entity.component.TransformComponent;
+import me.giverplay.tatakae.entity.component.CollidableComponent;
+import me.giverplay.tatakae.entity.component.SpriteComponent;
+import me.giverplay.tatakae.entity.component.TransformComponent;
+import me.giverplay.tatakae.entity.component.JumpComponent;
+import me.giverplay.tatakae.entity.component.PlayerComponent;
+import me.giverplay.tatakae.entity.component.RigidBodyComponent;
 
 public class EntityFactory
 {
   private ComponentMapper<CollidableComponent> collidableComponentMapper;
-  private ComponentMapper<TransformComponent> transformComponentMapper;
+  private ComponentMapper<me.giverplay.tatakae.entity.component.TransformComponent> transformComponentMapper;
   private ComponentMapper<RigidBodyComponent> rigidBodyComponentMapper;
   private ComponentMapper<PlayerComponent> playerComponentMapper;
-  private ComponentMapper<SpriteComponent> spriteComponentMapper;
+  private ComponentMapper<me.giverplay.tatakae.entity.component.SpriteComponent> spriteComponentMapper;
   private ComponentMapper<JumpComponent> jumpComponentMapper;
 
   public int createPlayer(World world, float x, float y)

@@ -1,4 +1,4 @@
-package me.giverplay.tatakai.screen;
+package me.giverplay.tatakae.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
@@ -7,11 +7,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import me.giverplay.tatakai.Tatakae;
-import me.giverplay.tatakai.block.Block;
-import me.giverplay.tatakai.entity.component.RigidBodyComponent;
-import me.giverplay.tatakai.entity.component.TransformComponent;
-import me.giverplay.tatakai.world.World;
+import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.entity.component.RigidBodyComponent;
+import me.giverplay.tatakae.entity.component.TransformComponent;
+import me.giverplay.tatakae.world.World;
+import me.giverplay.tatakae.Tatakae;
 
 public class GameScreen extends ScreenAdapter
 {
@@ -20,7 +20,7 @@ public class GameScreen extends ScreenAdapter
   private OrthographicCamera camera;
   private SpriteBatch batch;
 
-  private World world;
+  private me.giverplay.tatakae.world.World world;
 
   @Override
   public void show ()
@@ -30,7 +30,7 @@ public class GameScreen extends ScreenAdapter
 
     batch = new SpriteBatch();
 
-    world = new World(camera, Tatakae.SCREEN_WIDTH / Block.BLOCK_SIZE, Tatakae.SCREEN_HEIGHT / Block.BLOCK_SIZE, 2);
+    world = new World(camera, Tatakae.SCREEN_WIDTH / me.giverplay.tatakae.block.Block.BLOCK_SIZE, Tatakae.SCREEN_HEIGHT / Block.BLOCK_SIZE, 2);
     world.generate();
 
     if (Tatakae.DEBUG) {

@@ -1,7 +1,7 @@
-package me.giverplay.tatakai;
+package me.giverplay.tatakae;
 
 import com.badlogic.gdx.Game;
-import me.giverplay.tatakai.screen.GameScreen;
+import me.giverplay.tatakae.screen.GameScreen;
 
 public final class Tatakae extends Game
 {

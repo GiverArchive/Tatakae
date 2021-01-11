@@ -1,4 +1,4 @@
-package me.giverplay.tatakai.block;
+package me.giverplay.tatakae.block;
 
 import com.badlogic.gdx.graphics.Texture;
 

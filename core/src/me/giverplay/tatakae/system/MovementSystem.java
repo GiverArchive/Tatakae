@@ -1,25 +1,25 @@
-package me.giverplay.tatakai.system;
+package me.giverplay.tatakae.system;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.systems.IteratingSystem;
-import me.giverplay.tatakai.block.Block;
-import me.giverplay.tatakai.entity.component.CollidableComponent;
-import me.giverplay.tatakai.entity.component.RigidBodyComponent;
-import me.giverplay.tatakai.entity.component.TransformComponent;
-import me.giverplay.tatakai.world.World;
+import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.entity.component.CollidableComponent;
+import me.giverplay.tatakae.entity.component.TransformComponent;
+import me.giverplay.tatakae.entity.component.RigidBodyComponent;
+import me.giverplay.tatakae.world.World;
 
 public class MovementSystem extends IteratingSystem
 {
-  private ComponentMapper<TransformComponent> transformMapper;
+  private ComponentMapper<me.giverplay.tatakae.entity.component.TransformComponent> transformMapper;
   private ComponentMapper<RigidBodyComponent> rigidBodyMapper;
-  private ComponentMapper<CollidableComponent> collidableMapper;
+  private ComponentMapper<me.giverplay.tatakae.entity.component.CollidableComponent> collidableMapper;
 
   private final World world;
 
   public MovementSystem(World world)
   {
-    super(Aspect.all(TransformComponent.class, RigidBodyComponent.class));
+    super(Aspect.all(me.giverplay.tatakae.entity.component.TransformComponent.class, RigidBodyComponent.class));
 
     this.world = world;
   }
@@ -38,7 +38,7 @@ public class MovementSystem extends IteratingSystem
 
     if(collidable != null)
     {
-      if(transform.position.y < world.getSeaLevel() * Block.BLOCK_SIZE)
+      if(transform.position.y < world.getSeaLevel() * me.giverplay.tatakae.block.Block.BLOCK_SIZE)
       {
         rigidBody.velocity.y = 0;
         transform.position.y = world.getSeaLevel() * Block.BLOCK_SIZE;

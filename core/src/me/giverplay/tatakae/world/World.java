@@ -1,23 +1,23 @@
-package me.giverplay.tatakai.world;
+package me.giverplay.tatakae.world;
 
 import com.artemis.Entity;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Disposable;
-import me.giverplay.tatakai.block.Block;
-import me.giverplay.tatakai.entity.EntityFactory;
-import me.giverplay.tatakai.system.MovementSystem;
-import me.giverplay.tatakai.system.PlayerControllerSystem;
-import me.giverplay.tatakai.system.SpriteRenderSystem;
-import me.giverplay.tatakai.system.TileRenderSystem;
-import me.giverplay.tatakai.index.Blocks;
+import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.entity.EntityFactory;
+import me.giverplay.tatakae.index.Blocks;
+import me.giverplay.tatakae.system.MovementSystem;
+import me.giverplay.tatakae.system.PlayerControllerSystem;
+import me.giverplay.tatakae.system.SpriteRenderSystem;
+import me.giverplay.tatakae.system.TileRenderSystem;
 
 public class World implements Disposable
 {
   private final int[][][] blocks;
 
   private final com.artemis.World world;
-  private final EntityFactory entityFactory;
+  private final me.giverplay.tatakae.entity.EntityFactory entityFactory;
 
   private final int playerId;
 

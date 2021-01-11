@@ -1,4 +1,4 @@
-package me.giverplay.tatakai;
+package me.giverplay.tatakae;
 
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;

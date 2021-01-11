@@ -1,12 +1,12 @@
-package me.giverplay.tatakai.system;
+package me.giverplay.tatakae.system;
 
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import me.giverplay.tatakai.entity.component.SpriteComponent;
-import me.giverplay.tatakai.entity.component.TransformComponent;
+import me.giverplay.tatakae.entity.component.SpriteComponent;
+import me.giverplay.tatakae.entity.component.TransformComponent;
 
 public class SpriteRenderSystem extends IteratingSystem
 {

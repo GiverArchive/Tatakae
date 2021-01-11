@@ -1,13 +1,12 @@
-package me.giverplay.tatakai.system;
+package me.giverplay.tatakae.system;
 
 import com.artemis.BaseSystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import me.giverplay.tatakai.world.World;
-
-import static me.giverplay.tatakai.block.Block.BLOCK_SIZE;
+import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.world.World;
 
 public class TileRenderSystem extends BaseSystem
 {
@@ -61,7 +60,7 @@ public class TileRenderSystem extends BaseSystem
 
           if(texture != null)
           {
-            batch.draw(texture, x * BLOCK_SIZE, y * BLOCK_SIZE);
+            batch.draw(texture, x * Block.BLOCK_SIZE, y * Block.BLOCK_SIZE);
           }
         }
       }
