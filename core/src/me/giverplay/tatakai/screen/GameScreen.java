@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import me.giverplay.tatakai.Tatakai;
+import me.giverplay.tatakai.Tatakae;
 import me.giverplay.tatakai.block.Block;
 import me.giverplay.tatakai.entity.component.RigidBodyComponent;
 import me.giverplay.tatakai.entity.component.TransformComponent;
@@ -25,15 +25,15 @@ public class GameScreen extends ScreenAdapter
   @Override
   public void show ()
   {
-    camera = new OrthographicCamera(Tatakai.SCREEN_WIDTH, Tatakai.SCREEN_HEIGHT);
-    camera.setToOrtho(false, Tatakai.SCREEN_WIDTH, Tatakai.SCREEN_HEIGHT);
+    camera = new OrthographicCamera(Tatakae.SCREEN_WIDTH, Tatakae.SCREEN_HEIGHT);
+    camera.setToOrtho(false, Tatakae.SCREEN_WIDTH, Tatakae.SCREEN_HEIGHT);
 
     batch = new SpriteBatch();
 
-    world = new World(camera, Tatakai.SCREEN_WIDTH / Block.BLOCK_SIZE, Tatakai.SCREEN_HEIGHT / Block.BLOCK_SIZE, 2);
+    world = new World(camera, Tatakae.SCREEN_WIDTH / Block.BLOCK_SIZE, Tatakae.SCREEN_HEIGHT / Block.BLOCK_SIZE, 2);
     world.generate();
 
-    if (Tatakai.DEBUG) {
+    if (Tatakae.DEBUG) {
       Gdx.input.setInputProcessor(new InputAdapter() {
         @Override
         public boolean touchDown(int screenX, int screenY, int pointer, int button) {
