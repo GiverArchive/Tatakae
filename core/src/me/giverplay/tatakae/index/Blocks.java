@@ -3,6 +3,7 @@ package me.giverplay.tatakae.index;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.IntMap;
 import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.resource.Assets;
 
 public final class Blocks
 {
@@ -32,11 +33,11 @@ public final class Blocks
   }
 
   static {
+    COBBLESTONE = register(3, new Block(Assets.getCobblestoneTexture()));
+    OBSIDIAN = register(4, new Block(Assets.getObsidianTexture()));
+    BEDROCK = register(5, new Block(Assets.getBedrockTexture()));
+    STONE = register(1, new Block(Assets.getStoneTexture()));
+    DIRT = register(2, new Block(Assets.getDirtStone()));
     AIR = register(0, new Block(null));
-    STONE = register(1, new Block(new Texture("blocks/stone.png")));
-    DIRT = register(2, new Block(new Texture("blocks/dirt.png")));
-    COBBLESTONE = register(3, new Block(new Texture("blocks/cobblestone.png")));
-    OBSIDIAN = register(4, new Block(new Texture("blocks/obsidian.png")));
-    BEDROCK = register(5, new Block(new Texture("blocks/bedrock.png")));
   }
 }
