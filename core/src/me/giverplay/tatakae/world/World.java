@@ -16,7 +16,7 @@ public class World implements Disposable
 {
   private final int[][][] blocks;
 
-  private final com.artemis.World world;
+  private final com.artemis.World artemisWorld;
   private final me.giverplay.tatakae.entity.EntityFactory entityFactory;
 
   private final int playerId;
@@ -35,12 +35,12 @@ public class World implements Disposable
             .with(new TileRenderSystem(this, camera))
             .with(new SpriteRenderSystem(camera));
 
-    world = new com.artemis.World(config.build());
+    artemisWorld = new com.artemis.World(config.build());
 
     entityFactory = new EntityFactory();
-    world.inject(entityFactory);
+    artemisWorld.inject(entityFactory);
 
-    playerId = entityFactory.createPlayer(world, 0, 720);
+    playerId = entityFactory.createPlayer(artemisWorld, 0, 720);
   }
 
   public void generate()
@@ -78,13 +78,23 @@ public class World implements Disposable
 
   public void update(float deltaTime)
   {
-    world.setDelta(deltaTime);
-    world.process();
+    artemisWorld.setDelta(deltaTime);
+    artemisWorld.process();
   }
 
   public Block getBlock(int x, int y, int layer)
   {
-    return Blocks.getBlockByID(blocks[x][y][layer]);
+    return Blocks.getBlockByID(isValidCoordinate(x, y) ? blocks[x][y][layer] : 0);
+  }
+
+  public Block getBlock(float x, float y, int layer)
+  {
+    return getBlock(toWorldSize(x), toWorldSize(y), layer);
+  }
+
+  public boolean isValidCoordinate(int x, int y)
+  {
+    return x >= 0 && x < getWidth() && y >= 0 && y <getHeight();
   }
 
   public int getWidth()
@@ -104,7 +114,7 @@ public class World implements Disposable
 
   public Entity getPlayer()
   {
-    return world.getEntity(playerId);
+    return artemisWorld.getEntity(playerId);
   }
 
   public int getPlayerId()
@@ -114,7 +124,7 @@ public class World implements Disposable
 
   public com.artemis.World getArtemisWorld()
   {
-    return world;
+    return artemisWorld;
   }
 
   public int getSeaLevel()
@@ -130,6 +140,16 @@ public class World implements Disposable
   @Override
   public void dispose()
   {
-    world.dispose();
+    artemisWorld.dispose();
+  }
+
+  public static float toBlockSize(int coordinate)
+  {
+    return coordinate * Block.BLOCK_SIZE;
+  }
+
+  public static int toWorldSize(float size)
+  {
+    return (int) (size / Block.BLOCK_SIZE);
   }
 }

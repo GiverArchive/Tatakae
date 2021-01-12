@@ -60,7 +60,7 @@ public class TileRenderSystem extends BaseSystem
 
           if(texture != null)
           {
-            batch.draw(texture, x * Block.BLOCK_SIZE, y * Block.BLOCK_SIZE);
+            batch.draw(texture, World.toBlockSize(x), World.toBlockSize(y));
           }
         }
       }
