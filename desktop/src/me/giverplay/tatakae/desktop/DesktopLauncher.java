@@ -10,6 +10,7 @@ public class DesktopLauncher {
 		config.setWindowedMode(Tatakae.SCREEN_WIDTH, Tatakae.SCREEN_HEIGHT);
 		config.setResizable(false);
 		config.useVsync(true);
+		config.setTitle(Tatakae.NAME);
 
 		new Lwjgl3Application(Tatakae.getInstance(), config);
 	}
