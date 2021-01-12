@@ -32,11 +32,11 @@ public final class Blocks
   }
 
   static {
-    COBBLESTONE = register(3, new Block(Assets.getCobblestoneTexture()));
-    OBSIDIAN = register(4, new Block(Assets.getObsidianTexture()));
-    BEDROCK = register(5, new Block(Assets.getBedrockTexture()));
-    STONE = register(1, new Block(Assets.getStoneTexture()));
-    DIRT = register(2, new Block(Assets.getDirtStone()));
-    AIR = register(0, new Block(null));
+    COBBLESTONE = register(3, new Block(3, Assets.getCobblestoneTexture()));
+    OBSIDIAN = register(4, new Block(4, Assets.getObsidianTexture()));
+    BEDROCK = register(5, new Block(5, Assets.getBedrockTexture()));
+    STONE = register(1, new Block(1, Assets.getStoneTexture()));
+    DIRT = register(2, new Block(2, Assets.getDirtStone()));
+    AIR = register(0, new Block(0, null));
   }
 }
