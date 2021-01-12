@@ -7,6 +7,7 @@ buildscript {
         box2DLightsVersion = '1.4'
         aiVersion = '1.8.0'
         artemisVersion = '2.3.0'
+        gdxUtilsVersion = '0.13.7'
     }
 
     repositories {
@@ -101,5 +102,6 @@ project(":core") {
         api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         api "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         api "net.onedaybeard.artemis:artemis-odb:$artemisVersion"
+        api "com.github.tommyettinger:libgdx-utils:$gdxUtilsVersion"
     }
 }
