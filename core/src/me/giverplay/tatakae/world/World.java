@@ -12,6 +12,8 @@ import me.giverplay.tatakae.system.PlayerControllerSystem;
 import me.giverplay.tatakae.system.SpriteRenderSystem;
 import me.giverplay.tatakae.system.TileRenderSystem;
 
+import java.util.Random;
+
 public class World implements Disposable
 {
   private final int[][][] blocks;
@@ -45,32 +47,32 @@ public class World implements Disposable
 
   public void generate()
   {
+    Random random = new Random();
+
     for(int x = 0; x < getWidth(); x++)
     {
       for(int y = 0; y < getHeight(); y++)
       {
         for(int l = 0; l < getLayers(); l++)
         {
+          Block block;
+
           if(y < getSeaLevel() -10)
-          {
-            blocks[x][y][l] = 5;
-          }
+            block = Blocks.getBlockByID(5);
           else if(y < getSeaLevel() -8)
-          {
-            blocks[x][y][l] = 4;
-          }
+            block = Blocks.getBlockByID(4);
           else if(y < getSeaLevel() -5)
-          {
-            blocks[x][y][l] = 3;
-          }
+            block = Blocks.getBlockByID(3);
           else if(y < getSeaLevel() - 2)
-          {
-            blocks[x][y][l] = 1;
-          }
+            block = Blocks.getBlockByID(1);
           else if(y < getSeaLevel())
-          {
-            blocks[x][y][l] = 2;
-          }
+            block = Blocks.getBlockByID(2);
+          else if(l == 0)
+            block = Blocks.DIRT;
+          else
+            block = random.nextInt(100) < 10 ? Blocks.DIRT : Blocks.AIR;
+
+          blocks[x][y][l] = block.ID;
         }
       }
     }
