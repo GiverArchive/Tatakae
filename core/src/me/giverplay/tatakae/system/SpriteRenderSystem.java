@@ -4,6 +4,7 @@ import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import me.giverplay.tatakae.entity.component.SpriteComponent;
 import me.giverplay.tatakae.entity.component.TransformComponent;
@@ -36,19 +37,36 @@ public class SpriteRenderSystem extends IteratingSystem
   {
     TransformComponent transformComp = transformComponentMapper.get(entityId);
     SpriteComponent spriteComp = spriteComponentMapper.get(entityId);
+    Sprite sprite = spriteComp.sprite;
 
     if(transformComp.originCenter) {
-      spriteComp.sprite.setOriginCenter();
+      sprite.setOriginCenter();
     }
     else {
-      spriteComp.sprite.setOrigin(transformComp.origin.x, transformComp.origin.y);
+      sprite.setOrigin(transformComp.origin.x, transformComp.origin.y);
     }
 
-    spriteComp.sprite.setScale(transformComp.scaleX, transformComp.scaleY);
-    spriteComp.sprite.setRotation(transformComp.rotation);
-    spriteComp.sprite.setPosition(transformComp.position.x, transformComp.position.y);
+    sprite.setScale(transformComp.scaleX, transformComp.scaleY);
+    sprite.setRotation(transformComp.rotation);
+    sprite.setPosition(transformComp.position.x, transformComp.position.y);
 
-    spriteComp.sprite.draw(batch);
+    batch.draw(
+            sprite.getTexture(),
+            sprite.getX() - sprite.getOriginX(),
+            sprite.getY() - sprite.getOriginY(),
+            sprite.getOriginX(),
+            sprite.getOriginY(),
+            sprite.getWidth(),
+            sprite.getHeight(),
+            sprite.getScaleX(),
+            sprite.getScaleY(),
+            sprite.getRotation(),
+            sprite.getRegionX(),
+            sprite.getRegionY(),
+            sprite.getRegionWidth(),
+            sprite.getRegionHeight(),
+            spriteComp.flipX,
+            spriteComp.flipY);
   }
 
   @Override

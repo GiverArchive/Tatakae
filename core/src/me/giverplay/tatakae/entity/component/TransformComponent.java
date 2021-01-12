@@ -8,7 +8,7 @@ public class TransformComponent extends Component
   public final Vector2 position = new Vector2();
   public final Vector2 origin = new Vector2();
 
-  public boolean originCenter = false;
+  public boolean originCenter = true;
 
   public float rotation = 0.0f;
   public float scaleX = 1f;

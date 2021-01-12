@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import me.giverplay.tatakae.Tatakae;
 import me.giverplay.tatakae.block.Block;
+import me.giverplay.tatakae.entity.component.RigidBodyComponent;
+import me.giverplay.tatakae.entity.component.TransformComponent;
 import me.giverplay.tatakae.world.World;
 
 public class GameScreen extends ScreenAdapter
@@ -38,6 +40,14 @@ public class GameScreen extends ScreenAdapter
     Gdx.gl.glClearColor(0.3f, 0.6f, 0.8f, 1);
 
     world.update(deltaTime);
+
+    if(Gdx.app.getInput().isTouched())
+    {
+      screenCoordinates.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+      camera.unproject(screenCoordinates);
+      world.getPlayer().getComponent(TransformComponent.class).position.set(screenCoordinates.x, screenCoordinates.y);
+      world.getPlayer().getComponent(RigidBodyComponent.class).velocity.set(0, 0);
+    }
   }
 
   @Override
