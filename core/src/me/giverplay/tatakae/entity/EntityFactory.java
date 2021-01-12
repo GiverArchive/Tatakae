@@ -2,14 +2,14 @@ package me.giverplay.tatakae.entity;
 
 import com.artemis.ComponentMapper;
 import com.artemis.World;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import me.giverplay.tatakae.entity.component.CollidableComponent;
-import me.giverplay.tatakae.entity.component.SpriteComponent;
-import me.giverplay.tatakae.entity.component.TransformComponent;
 import me.giverplay.tatakae.entity.component.JumpComponent;
 import me.giverplay.tatakae.entity.component.PlayerComponent;
 import me.giverplay.tatakae.entity.component.RigidBodyComponent;
+import me.giverplay.tatakae.entity.component.SpriteComponent;
+import me.giverplay.tatakae.entity.component.TransformComponent;
+import me.giverplay.tatakae.resource.Assets;
 
 public class EntityFactory
 {
@@ -28,7 +28,7 @@ public class EntityFactory
     transformComponent.position.set(x, y);
 
     SpriteComponent spriteComponent = spriteComponentMapper.create(entityId);
-    spriteComponent.sprite = new Sprite(new Texture("player/player.png"));
+    spriteComponent.sprite = new Sprite(Assets.getPlayerTexture());
 
     collidableComponentMapper.create(entityId);
     rigidBodyComponentMapper.create(entityId);

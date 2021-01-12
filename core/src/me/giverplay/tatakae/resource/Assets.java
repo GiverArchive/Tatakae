@@ -25,6 +25,9 @@ public class Assets
   @Asset
   public static AssetDescriptor<Texture> bedrockTexture = new AssetDescriptor<>("blocks/stone.png", Texture.class);
 
+  @Asset
+  public static AssetDescriptor<Texture> playerTexture = new AssetDescriptor<>("player/player.png", Texture.class);
+
   public static void load()
   {
     Texture.setAssetManager(manager);
@@ -54,5 +57,10 @@ public class Assets
   public static Texture getBedrockTexture()
   {
     return manager.get(bedrockTexture);
+  }
+
+  public static Texture getPlayerTexture()
+  {
+    return manager.get(playerTexture);
   }
 }
