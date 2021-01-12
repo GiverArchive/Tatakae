@@ -14,16 +14,16 @@ public class Assets
   public static AssetDescriptor<Texture> stoneTexture = new AssetDescriptor<>("blocks/stone.png", Texture.class);
 
   @Asset
-  public static AssetDescriptor<Texture> dirtTexture = new AssetDescriptor<>("blocks/stone.png", Texture.class);
+  public static AssetDescriptor<Texture> dirtTexture = new AssetDescriptor<>("blocks/dirt.png", Texture.class);
 
   @Asset
-  public static AssetDescriptor<Texture> cobblestoneTexture = new AssetDescriptor<>("blocks/stone.png", Texture.class);
+  public static AssetDescriptor<Texture> cobblestoneTexture = new AssetDescriptor<>("blocks/cobblestone.png", Texture.class);
 
   @Asset
-  public static AssetDescriptor<Texture> obsidianTexture = new AssetDescriptor<>("blocks/stone.png", Texture.class);
+  public static AssetDescriptor<Texture> obsidianTexture = new AssetDescriptor<>("blocks/obsidian.png", Texture.class);
 
   @Asset
-  public static AssetDescriptor<Texture> bedrockTexture = new AssetDescriptor<>("blocks/stone.png", Texture.class);
+  public static AssetDescriptor<Texture> bedrockTexture = new AssetDescriptor<>("blocks/bedrock.png", Texture.class);
 
   @Asset
   public static AssetDescriptor<Texture> playerTexture = new AssetDescriptor<>("player/player.png", Texture.class);
