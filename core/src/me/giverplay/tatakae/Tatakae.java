@@ -1,7 +1,7 @@
 package me.giverplay.tatakae;
 
 import com.badlogic.gdx.Game;
-import me.giverplay.tatakae.screen.GameScreen;
+import me.giverplay.tatakae.screen.PreloadScreen;
 
 public final class Tatakae extends Game
 {
@@ -17,7 +17,7 @@ public final class Tatakae extends Game
 	@Override
 	public void create()
 	{
-		setScreen(new GameScreen());
+		setScreen(new PreloadScreen());
 	}
 
 	public static Tatakae getInstance()
