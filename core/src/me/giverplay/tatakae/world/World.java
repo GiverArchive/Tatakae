@@ -4,9 +4,11 @@ import com.artemis.Entity;
 import com.artemis.WorldConfigurationBuilder;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Disposable;
+import me.giverplay.tatakae.Tatakae;
 import me.giverplay.tatakae.block.Block;
 import me.giverplay.tatakae.entity.EntityFactory;
 import me.giverplay.tatakae.index.Blocks;
+import me.giverplay.tatakae.system.CollisionDebugSystem;
 import me.giverplay.tatakae.system.MovementSystem;
 import me.giverplay.tatakae.system.PlayerControllerSystem;
 import me.giverplay.tatakae.system.SpriteRenderSystem;
@@ -36,6 +38,11 @@ public class World implements Disposable
             .with(new MovementSystem(this))
             .with(new TileRenderSystem(this, camera))
             .with(new SpriteRenderSystem(camera));
+
+    if(Tatakae.DEBUG)
+    {
+      config.with(new CollisionDebugSystem(camera));
+    }
 
     artemisWorld = new com.artemis.World(config.build());
 

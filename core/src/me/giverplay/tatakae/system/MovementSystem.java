@@ -11,15 +11,15 @@ import me.giverplay.tatakae.world.World;
 
 public class MovementSystem extends IteratingSystem
 {
-  private ComponentMapper<me.giverplay.tatakae.entity.component.TransformComponent> transformMapper;
+  private ComponentMapper<TransformComponent> transformMapper;
   private ComponentMapper<RigidBodyComponent> rigidBodyMapper;
-  private ComponentMapper<me.giverplay.tatakae.entity.component.CollidableComponent> collidableMapper;
+  private ComponentMapper<CollidableComponent> collidableMapper;
 
   private final World world;
 
   public MovementSystem(World world)
   {
-    super(Aspect.all(me.giverplay.tatakae.entity.component.TransformComponent.class, RigidBodyComponent.class));
+    super(Aspect.all(TransformComponent.class, RigidBodyComponent.class));
 
     this.world = world;
   }
@@ -36,9 +36,11 @@ public class MovementSystem extends IteratingSystem
     transform.position.mulAdd(rigidBody.velocity, delta);
     rigidBody.velocity.y += world.gravity * delta;
 
-    if(collidable != null)
+    if(collidableMapper.has(entityId))
     {
-      if(transform.position.y < world.getSeaLevel() * me.giverplay.tatakae.block.Block.BLOCK_SIZE)
+      collidable.collisionBox.setCenter(transform.position);
+
+      if(transform.position.y < world.getSeaLevel() * Block.BLOCK_SIZE)
       {
         rigidBody.velocity.y = 0;
         transform.position.y = world.getSeaLevel() * Block.BLOCK_SIZE;
